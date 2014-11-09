@@ -1,9 +1,11 @@
 # Install the latest haskell-platform package from Ubuntu trusty repository
-FROM ubuntu:14.04
+FROM debian:latest
 MAINTAINER contact@thachmai.info
 
 RUN apt-get update \
-	&& apt-get -y install haskell-platform
+	&& apt-get -y install haskell-platform \
+        && apt-get clean \
+        && rm -rf /var/cache/apt/archives/*
 
 VOLUME /src
 WORKDIR /src
